@@ -1,0 +1,31 @@
+.line {
+    align-items: center;
+    margin: 1em -1em;
+    color: #cccccc;
+    
+    &:before,
+    &:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+} 
+
+
+.itemform {
+    font-size: 0.9em;
+    //border: 1px solid #f1f1f1;
+    background: rgb(219, 219, 219);
+}
+.myform {
+    margin-top: 7rem;
+}
+.ion-padding {
+    bottom: 0;
+}
+.myiconclass {
+  
+   height: 30%;
+   width: 30%;
+  }
+  
+ 

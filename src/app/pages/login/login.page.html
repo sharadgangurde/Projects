@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log In</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- <div class="myiconclass">
+  <img class="myicon" src="../../../assets/icon/icon.png">
+</div> -->
+<ion-content class="ion-padding">
+  <form class="myform" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+    <ion-item class="itemform">
+      <ion-label position="floating">Email-Id</ion-label>
+      <ion-input type="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Enter a valid email address</div>
+      </div>
+    </ion-item>
+    
+    <ion-item class="itemform">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></ion-input>
+      <div *ngIf="submitted && f.lname.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Minimum 6 characters required</div>
+      </div>
+    </ion-item>
+    
+    <ion-button type="submit" expand="block" color="danger" [disabled]="!loginForm.valid">Login</ion-button>
+    <ion-button expand="block">create account</ion-button>
+    
+  </form>
+</ion-content>

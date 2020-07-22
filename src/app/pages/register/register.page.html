@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="myForm" (ngSubmit)="register()" novalidate>
+    <ion-item class="itemform">
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input type="text" formControlName="fname" [ngClass]="{ 'is-invalid': submitted && f.fname.errors }" ></ion-input>
+      <div *ngIf="submitted && f.fname.errors" class="invalid-feedback">
+        <div *ngIf="f.fname.errors.required">First Name is required</div>
+        <div *ngIf="f.fname.errors.pattern">Only Letters allowed</div>
+      </div>
+    </ion-item>
+    <ion-item class="itemform">
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input type="text" formControlName="lname" [ngClass]="{ 'is-invalid': submitted && f.lname.errors }" ></ion-input>
+      <div *ngIf="submitted && f.lname.errors" class="invalid-feedback">
+        <div *ngIf="f.lname.errors.required">Last Name is required</div>
+        <div *ngIf="f.fname.errors.pattern">Only Letters allowed</div>
+      </div>
+    </ion-item>
+    <ion-item class="itemform">
+      <ion-label position="floating">Mobile No.</ion-label>
+      <ion-input type="text" formControlName="mno" [ngClass]="{ 'is-invalid': submitted && f.mno.errors }"></ion-input>
+      <div *ngIf="submitted && f.mno.errors" class="invalid-feedback">
+        <div *ngIf="f.mno.errors.required">Mobile no. is required</div>
+        <div *ngIf="f.mno.errors.pattern">Only Numbers allowed</div>
+        <div *ngIf="f.mno.errors.minlength">Invalid Mobile number</div>
+      </div>
+    </ion-item>
+    <ion-item class="itemform">
+      <ion-label position="floating">Email-Id</ion-label>
+      <ion-input type="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Enter a valid email address</div>
+      </div>
+    </ion-item>
+    <ion-item class="itemform">
+      <ion-label position="floating">Address</ion-label>
+      <ion-input type="text" formControlName="addr" [ngClass]="{ 'is-invalid': submitted && f.addr.errors }"></ion-input>
+      <div *ngIf="submitted && f.addr.errors" class="invalid-feedback">
+        <div *ngIf="f.addr.errors.required">Address is required</div>
+      </div>
+    </ion-item>
+    <ion-item class="itemform">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></ion-input>
+      <div *ngIf="submitted && f.lname.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Minimum 6 characters required</div>
+      </div>
+    </ion-item>
+    <ion-item class="itemform">
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" formControlName="conf_pass" [ngClass]="{ 'is-invalid': submitted && f.conf_pass.errors }"></ion-input>
+      <div *ngIf="submitted && f.conf_pass.errors" class="invalid-feedback">
+        <div *ngIf="f.conf_pass.errors.equalto">Password Mismatch</div>
+      </div>
+        <div class="invalid-feedback" *ngIf="( myForm.get('conf_pass').hasError('equalTo') || myForm.get('conf_pass').hasError('required') ) && myForm.get('conf_pass').touched"></div>
+          <div class="invalid-feedback" *ngIf="myForm.get('conf_pass').hasError('equalTo') && myForm.get('conf_pass').touched">Password Mismatch</div>
+     
+
+  </ion-item>
+  <div class="padding">
+    <a href="/login">Already a user..?</a>
+</div>
+    <ion-button type="submit" expand="block" color="danger" >Register</ion-button>
+    
+  </form>
+  <!-- <ion-item *ngFor="let data of allBlogs">
+    <p>{{data}}</p>
+  </ion-item> -->
+</ion-content>
