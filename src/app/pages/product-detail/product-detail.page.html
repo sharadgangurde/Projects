@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Product Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-icon routerLink="/cart" class="carticon" size="large" slot="end" name="cart"></ion-icon>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar> -->
+  <!----<ion-button expand="block" (click)="addRoutineToList()">ADD LIst</ion-button>
+  {{routinelist}}
+  -->
+  <ion-card>
+  <img [src] ="data.imgUrl"/>  
+    <ion-card-header >
+         <ion-card-title>{{data.name}}<ion-icon align-icon="right" name="heart"></ion-icon>
+         </ion-card-title>
+        <ion-card-subtitle color="danger">{{data.desc1}}</ion-card-subtitle>
+        <ion-card-subtitle>{{data.desc2}}</ion-card-subtitle>
+        <ion-card-subtitle>{{data.desc3}}</ion-card-subtitle>
+        <ion-card-subtitle color="secondary">Rs.{{data.price}}/-</ion-card-subtitle> 
+    </ion-card-header>
+    
+      
+   <ion-button expand="full" routerLink="/cart">
+     ADD TO CART
+   </ion-button>
+  </ion-card>
+</ion-content>
