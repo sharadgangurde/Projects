@@ -8,3 +8,29 @@
 .icons {
     display: inline-block;
 }
+.price {
+    color: darkgreen;
+    ion-icon {
+        margin-top: 0.9rem;
+    }
+}
+.buttons {
+    width: 50%;
+    display: inline-block;
+    
+}
+.hearticon {
+    margin-right: 0.4rem;
+    float: right;
+}
+.carticon {
+    margin-right: 2rem;
+    float: right;
+}
+#cart-badge {
+    position: absolute;
+top: 5px;
+right: 1.7rem;
+background-color: red;
+border-radius: 100%;
+}

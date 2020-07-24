@@ -12,7 +12,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class LoginPage implements OnInit {
   // email: string;
   // password: string;
-  loginForm: FormGroup
+  submitted=false;
+  loginForm: FormGroup;
   constructor(private storage: Storage,public router:Router, public menu: MenuController ,public alertController: AlertController, public formBuilder: FormBuilder) {
     this.loginForm = new FormGroup({
       email: new FormControl('',[Validators.required, Validators.email]),
@@ -22,6 +23,7 @@ export class LoginPage implements OnInit {
   }
   get f() { return this.loginForm.controls; }
   async login() {
+    this.submitted = true;
     if (this.loginForm.invalid) {
       return;
   } 

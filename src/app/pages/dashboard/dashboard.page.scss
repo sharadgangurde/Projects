@@ -1,9 +1,26 @@
 .cards {
     
-    display: inline-block;
-    width: 40%;
+    //display: inline-block;
+    width: 50%;
+    ion-card-title {
+        font-size: small;
+    }
 }
 .carticon {
     margin-right: 2rem;
-    
+    float: right;
+}
+.price {
+    color: darkgreen;
+}
+#cart-badge {
+position: absolute;
+top: 5px;
+right: 1.7rem;
+background-color: red;
+border-radius: 100%;
+}
+.carticoncard {
+    margin-right: 0.4rem;
+    float: right;
 }

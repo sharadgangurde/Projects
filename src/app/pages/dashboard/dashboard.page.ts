@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { MenuController } from '@ionic/angular';
 import{ HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Router, NavigationExtras } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -14,8 +15,10 @@ import { Router, NavigationExtras } from '@angular/router';
 export class DashboardPage implements OnInit {
   public name = '';
   public items: any ='';
+  public count;
   singleItem: any ='';
-  constructor(public storage: Storage, public router: Router, public menu: MenuController, private http: HttpClient ) {
+  cartItemCount: BehaviorSubject<number>;
+  constructor(public storage: Storage, public router: Router, public cartService: CartService,public menu: MenuController, private http: HttpClient ) {
     
     this.getData();
     
@@ -30,17 +33,18 @@ export class DashboardPage implements OnInit {
     this.router.navigate(['product-detail'], navigationExtras);
   }
   getData(){
-    let url='https://my-json-server.typicode.com/sharadgangurde/JSONFILE/db';
-    let data:Observable<any>=this.http.get(url);
-    data.subscribe(result=>{
-       //console.log(result);
-       this.items = result.arrayOfProducts;
-       console.log(this.items);
-    })
-
+    // let url='https://my-json-server.typicode.com/sharadgangurde/JSONFILE/db';
+    // let data:Observable<any>=this.http.get(url);
+    // data.subscribe(result=>{
+    //    //console.log(result);
+    //    this.items = result.arrayOfProducts;
+    //    //console.log(this.items);
+    // })
+    this.items = this.cartService.getProducts();
   }
 
   ngOnInit() {
+    this.cartItemCount = this.cartService.getCartItemCount()
     var result = JSON.parse(localStorage.getItem('user'));
     this.name = result.fname;
   }

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="placeorder()">
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input type=text></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Delivery note(Optional)</ion-label>
+      <ion-input type='text'></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-radio-group value="biff">
+        <ion-list-header>
+          <ion-label>Select Payment Method</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Credit/Debit Card</ion-label>
+          <ion-radio slot="start" value="creditdebit" (ionSelect)="selectedOptions('creditdebit')"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>PAYTM/UPI</ion-label>
+          <ion-radio slot="start" value="UPI" (ionSelect)="selectedOptions('UPI')"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>COD (Cash on delivery)</ion-label>
+          <ion-radio slot="start" value="COD" (ionSelect)="selectedOptions('COD')"></ion-radio>
+        </ion-item>
+    
+        </ion-radio-group>
+    </ion-list>
+    <ion-button type="submit" expand="full">PLACE ORDER</ion-button>
+  </form>
+</ion-content>

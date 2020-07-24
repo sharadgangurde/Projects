@@ -1,26 +1,41 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
+      <ion-menu-button color="primary" menu="main-menu"></ion-menu-button>
     </ion-buttons>
     <ion-icon routerLink="/cart" class="carticon" size="large" slot="end" name="cart"></ion-icon>
+    <ion-badge id="cart-badge">{{ cartItemCount | async }}</ion-badge>
     <ion-title>Dashboard</ion-title>
     
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar>
+  <!-- <ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar> -->
   <!----<ion-button expand="block" (click)="addRoutineToList()">ADD LIst</ion-button>
   {{routinelist}}
   -->
-  <ion-card *ngFor="let item of items " (click)="gotoDetail(item)" class="cards">
-  <img [src] ="item.imgUrl"/>  
-    <ion-card-header >
-         <ion-card-title>{{item.name}}</ion-card-title>
-        <ion-card-subtitle>{{item.price}}</ion-card-subtitle> 
-    </ion-card-header>
-   
-  </ion-card>
+  
+<ion-grid>
+  <ion-row>
+    <ion-col class="cards" size="6" *ngFor="let item of items " (click)="gotoDetail(item)">
+      <ion-card>
+        <div class="carticoncard">
+          <ion-icon color="danger" size="small" name="heart-outline"></ion-icon>
+          <ion-icon color="danger" size="small" name="cart-outline"></ion-icon>
+        </div> 
+        <img [src] ="item.imgUrl"/>  
+        <ion-card-header >
+        <ion-card-title>{{item.name}}</ion-card-title>
+        <div class="price">
+          <ion-icon name="pricetag-outline"></ion-icon>
+          <span class="pricetag"> ₹.{{item.price}}</span>
+        </div>
+      </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+ 
 
 </ion-content>

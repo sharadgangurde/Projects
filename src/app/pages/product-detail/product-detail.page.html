@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Product Details</ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
+      <ion-menu-button color="primary" menu="main-menu"></ion-menu-button>
     </ion-buttons>
+    <ion-title>Product Details</ion-title>
     <ion-icon routerLink="/cart" class="carticon" size="large" slot="end" name="cart"></ion-icon>
-    
+    <ion-badge id="cart-badge">{{ cartItemCount | async }}</ion-badge>
   </ion-toolbar>
 </ion-header>
 
@@ -15,19 +15,29 @@
   {{routinelist}}
   -->
   <ion-card>
-  <img [src] ="data.imgUrl"/>  
+    <div class="hearticon">
+      <ion-icon color="danger" size="large" name="heart"></ion-icon>
+    </div>  
+  <img [src]="data.imgUrl"/>
     <ion-card-header >
-         <ion-card-title>{{data.name}}<ion-icon align-icon="right" name="heart"></ion-icon>
-         </ion-card-title>
+        <ion-card-title>{{data.name}}</ion-card-title>
         <ion-card-subtitle color="danger">{{data.desc1}}</ion-card-subtitle>
         <ion-card-subtitle>{{data.desc2}}</ion-card-subtitle>
         <ion-card-subtitle>{{data.desc3}}</ion-card-subtitle>
-        <ion-card-subtitle color="secondary">Rs.{{data.price}}/-</ion-card-subtitle> 
+        <div class="price">
+          <ion-icon name="pricetag-outline"></ion-icon>
+          <span class="pricetag"> ₹.{{data.price}}/-</span>
+        </div> 
     </ion-card-header>
-    
-      
-   <ion-button expand="full" routerLink="/cart">
-     ADD TO CART
-   </ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-button expand="full" (click)="addToCart(data)">ADD TO CART</ion-button>
+        </ion-col>
+        <ion-col col-6>
+          <ion-button expand="full" routerLink="/cart">BUY NOW</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 </ion-content>
